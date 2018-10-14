@@ -4,18 +4,15 @@
 #
 Name     : perl-XML-SimpleObject
 Version  : 0.53
-Release  : 1
+Release  : 2
 URL      : https://cpan.metacpan.org/authors/id/D/DB/DBRIAN/XML-SimpleObject-0.53.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/D/DB/DBRIAN/XML-SimpleObject-0.53.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libx/libxml-simpleobject-perl/libxml-simpleobject-perl_0.53-3.debian.tar.xz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : Artistic-1.0 GPL-1.0
-Requires: perl-XML-SimpleObject-license
-Requires: perl-XML-SimpleObject-man
-Requires: perl(XML::LibXML)
-Requires: perl(XML::Parser)
-Requires: perl(XML::SAX::Exception)
+Requires: perl-XML-SimpleObject-license = %{version}-%{release}
+BuildRequires : buildreq-cpan
 BuildRequires : perl(XML::LibXML)
 BuildRequires : perl(XML::Parser)
 BuildRequires : perl(XML::SAX::Exception)
@@ -23,6 +20,15 @@ BuildRequires : perl(XML::SAX::Exception)
 %description
 ==================================================================
 XML::SimpleObject
+
+%package dev
+Summary: dev components for the perl-XML-SimpleObject package.
+Group: Development
+Provides: perl-XML-SimpleObject-devel = %{version}-%{release}
+
+%description dev
+dev components for the perl-XML-SimpleObject package.
+
 
 %package license
 Summary: license components for the perl-XML-SimpleObject package.
@@ -32,19 +38,11 @@ Group: Default
 license components for the perl-XML-SimpleObject package.
 
 
-%package man
-Summary: man components for the perl-XML-SimpleObject package.
-Group: Default
-
-%description man
-man components for the perl-XML-SimpleObject package.
-
-
 %prep
-tar -xf %{SOURCE1}
-cd ..
 %setup -q -n XML-SimpleObject0.53
-mkdir -p %{_topdir}/BUILD/XML-SimpleObject0.53/deblicense/
+cd ..
+%setup -q -T -D -n XML-SimpleObject0.53 -b 1
+mkdir -p deblicense/
 mv %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/XML-SimpleObject0.53/deblicense/
 
 %build
@@ -69,12 +67,12 @@ make TEST_VERBOSE=1 test
 
 %install
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/perl-XML-SimpleObject
-cp deblicense/copyright %{buildroot}/usr/share/doc/perl-XML-SimpleObject/deblicense_copyright
+mkdir -p %{buildroot}/usr/share/package-licenses/perl-XML-SimpleObject
+cp deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-XML-SimpleObject/deblicense_copyright
 if test -f Makefile.PL; then
-make pure_install PERL_INSTALL_ROOT=%{buildroot}
+make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
-./Build install --installdirs=site --destdir=%{buildroot}
+./Build install --installdirs=vendor --destdir=%{buildroot}
 fi
 find %{buildroot} -type f -name .packlist -exec rm -f {} ';'
 find %{buildroot} -depth -type d -exec rmdir {} 2>/dev/null ';'
@@ -83,17 +81,17 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/site_perl/5.26.1/XML/SimpleObject.pm
-/usr/lib/perl5/site_perl/5.26.1/XML/SimpleObject/Enhanced.pm
-/usr/lib/perl5/site_perl/5.26.1/XML/SimpleObject/LibXML.pm
-/usr/lib/perl5/site_perl/5.26.1/XML/SimpleObject/ex.pl
-/usr/lib/perl5/site_perl/5.26.1/XML/ex.pl
+/usr/lib/perl5/vendor_perl/5.26.1/XML/SimpleObject.pm
+/usr/lib/perl5/vendor_perl/5.26.1/XML/SimpleObject/Enhanced.pm
+/usr/lib/perl5/vendor_perl/5.26.1/XML/SimpleObject/LibXML.pm
+/usr/lib/perl5/vendor_perl/5.26.1/XML/SimpleObject/ex.pl
+/usr/lib/perl5/vendor_perl/5.26.1/XML/ex.pl
 
-%files license
-%defattr(-,root,root,-)
-/usr/share/doc/perl-XML-SimpleObject/deblicense_copyright
-
-%files man
+%files dev
 %defattr(-,root,root,-)
 /usr/share/man/man3/XML::SimpleObject.3
 /usr/share/man/man3/XML::SimpleObject::LibXML.3
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/perl-XML-SimpleObject/deblicense_copyright
