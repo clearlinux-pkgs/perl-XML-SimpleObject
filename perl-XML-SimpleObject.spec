@@ -4,7 +4,7 @@
 #
 Name     : perl-XML-SimpleObject
 Version  : 0.53
-Release  : 8
+Release  : 9
 URL      : https://cpan.metacpan.org/authors/id/D/DB/DBRIAN/XML-SimpleObject-0.53.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/D/DB/DBRIAN/XML-SimpleObject-0.53.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libx/libxml-simpleobject-perl/libxml-simpleobject-perl_0.53-3.debian.tar.xz
