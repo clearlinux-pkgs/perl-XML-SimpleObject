@@ -4,7 +4,7 @@
 #
 Name     : perl-XML-SimpleObject
 Version  : 0.53
-Release  : 11
+Release  : 12
 URL      : https://cpan.metacpan.org/authors/id/D/DB/DBRIAN/XML-SimpleObject-0.53.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/D/DB/DBRIAN/XML-SimpleObject-0.53.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libx/libxml-simpleobject-perl/libxml-simpleobject-perl_0.53-3.debian.tar.xz
@@ -25,6 +25,7 @@ XML::SimpleObject
 Summary: dev components for the perl-XML-SimpleObject package.
 Group: Development
 Provides: perl-XML-SimpleObject-devel = %{version}-%{release}
+Requires: perl-XML-SimpleObject = %{version}-%{release}
 
 %description dev
 dev components for the perl-XML-SimpleObject package.
@@ -43,7 +44,7 @@ license components for the perl-XML-SimpleObject package.
 cd ..
 %setup -q -T -D -n XML-SimpleObject0.53 -b 1
 mkdir -p deblicense/
-mv %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/XML-SimpleObject0.53/deblicense/
+cp -r %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/XML-SimpleObject0.53/deblicense/
 
 %build
 export http_proxy=http://127.0.0.1:9/
