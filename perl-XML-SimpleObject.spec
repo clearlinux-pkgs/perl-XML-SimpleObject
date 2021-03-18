@@ -4,7 +4,7 @@
 #
 Name     : perl-XML-SimpleObject
 Version  : 0.53
-Release  : 15
+Release  : 16
 URL      : https://cpan.metacpan.org/authors/id/D/DB/DBRIAN/XML-SimpleObject-0.53.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/D/DB/DBRIAN/XML-SimpleObject-0.53.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libx/libxml-simpleobject-perl/libxml-simpleobject-perl_0.53-3.debian.tar.xz
@@ -105,8 +105,8 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.30.3/XML/SimpleObject.pm
-/usr/lib/perl5/vendor_perl/5.30.3/XML/SimpleObject/Enhanced.pm
-/usr/lib/perl5/vendor_perl/5.30.3/XML/SimpleObject/LibXML.pm
-/usr/lib/perl5/vendor_perl/5.30.3/XML/SimpleObject/ex.pl
-/usr/lib/perl5/vendor_perl/5.30.3/XML/ex.pl
+/usr/lib/perl5/vendor_perl/5.32.1/XML/SimpleObject.pm
+/usr/lib/perl5/vendor_perl/5.32.1/XML/SimpleObject/Enhanced.pm
+/usr/lib/perl5/vendor_perl/5.32.1/XML/SimpleObject/LibXML.pm
+/usr/lib/perl5/vendor_perl/5.32.1/XML/SimpleObject/ex.pl
+/usr/lib/perl5/vendor_perl/5.32.1/XML/ex.pl
