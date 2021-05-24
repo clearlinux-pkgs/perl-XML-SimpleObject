@@ -105,8 +105,8 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.32.1/XML/SimpleObject.pm
-/usr/lib/perl5/vendor_perl/5.32.1/XML/SimpleObject/Enhanced.pm
-/usr/lib/perl5/vendor_perl/5.32.1/XML/SimpleObject/LibXML.pm
-/usr/lib/perl5/vendor_perl/5.32.1/XML/SimpleObject/ex.pl
-/usr/lib/perl5/vendor_perl/5.32.1/XML/ex.pl
+/usr/lib/perl5/vendor_perl/5.34.0/XML/SimpleObject.pm
+/usr/lib/perl5/vendor_perl/5.34.0/XML/SimpleObject/Enhanced.pm
+/usr/lib/perl5/vendor_perl/5.34.0/XML/SimpleObject/LibXML.pm
+/usr/lib/perl5/vendor_perl/5.34.0/XML/SimpleObject/ex.pl
+/usr/lib/perl5/vendor_perl/5.34.0/XML/ex.pl
